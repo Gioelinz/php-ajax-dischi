@@ -3,50 +3,7 @@
 /* Prima Milestone:
 Stampiamo i dischi solo con l’utilizzo di PHP, che stampa direttamente i dischi in pagina: al caricamento della pagina ci saranno tutti i dischi. */
 
-$database = [
-    [
-        'title' => 'New Jersey',
-        'author' => 'Bon Jovi',
-        'year' => 1988,
-        'poster' => 'https://images-na.ssl-images-amazon.com/images/I/51sBr4IWDwL.jpg',
-        'genre' => 'Rock'
-    ],
-    [
-        'title' => 'Live at Wembley 86',
-        'author' => 'Queen',
-        'year' => 1992,
-        'poster' => 'https://images-na.ssl-images-amazon.com/images/I/71g40mlbinL._SX355_.jpg',
-        'genre' => 'Pop'
-    ],
-    [
-        'title' => 'Ten\'s Summoner\'s Tales',
-        'author' => 'Sting',
-        'year' => 1993,
-        'poster' => 'https://images-na.ssl-images-amazon.com/images/I/411BQR6BHRL.jpg',
-        'genre' => 'Pop'
-    ],
-    [
-        'title' => 'Steve Gadd band',
-        'author' => 'Steve Gadd Band',
-        'year' => 2018,
-        'poster' => 'https://m.media-amazon.com/images/I/81UtLzBDoEL._SS500_.jpg',
-        'genre' => 'Jazz'
-    ],
-    [
-        'title' => 'Brave new World',
-        'author' => 'Iron Maiden',
-        'year' => 2000,
-        'poster' => 'https://upload.wikimedia.org/wikipedia/en/0/03/Iron_Maiden_-_Brave_New_World.jpg',
-        'genre' => 'Metal'
-    ],
-    [
-        'title' => 'One more car, one more rider',
-        'author' => 'Eric Clapton',
-        'year' => 2002,
-        'poster' => 'https://images-na.ssl-images-amazon.com/images/I/81MDAIdh78L._SY355_.jpg',
-        'genre' => 'Rock'
-    ]
-];
+include '../includes/data/db.php';
 
 ?>
 
@@ -67,6 +24,25 @@ $database = [
     <header class="py-2 px-4">
         <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Spotify_icon.png" alt="Logo" />
     </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <!-- Qui il foreach -->
+                <?php foreach ($database as $disc) : ?>
+                    <div class="col">
+                        <!-- Card -->
+                        <div class="card-disc text-center" role="button">
+                            <img src="<?= $disc['poster'] ?>" alt="Poster" />
+                            <h4 class="text-white mt-3"><?= $disc['title'] ?></h4>
+                            <p class="text-secondary m-0 pt-2"><?= $disc['author'] ?></p>
+                            <p class="text-secondary"><?= $disc['year'] ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>
